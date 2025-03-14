@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7C239786
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadraClientConsole", "tests\NadraClientConsole\NadraClientConsole.csproj", "{B145EEAE-9C87-4E35-B1F0-2C9385C0A347}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "tests\UnitTestProject1\UnitTestProject1.csproj", "{6F38CFF0-81EE-4B77-96ED-EF78FA81ED2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{B145EEAE-9C87-4E35-B1F0-2C9385C0A347}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B145EEAE-9C87-4E35-B1F0-2C9385C0A347}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B145EEAE-9C87-4E35-B1F0-2C9385C0A347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F38CFF0-81EE-4B77-96ED-EF78FA81ED2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F38CFF0-81EE-4B77-96ED-EF78FA81ED2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F38CFF0-81EE-4B77-96ED-EF78FA81ED2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F38CFF0-81EE-4B77-96ED-EF78FA81ED2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{64DA4C3C-1077-40BF-9706-D3D606AA66D8} = {3A6E9AF5-A095-41B1-B76A-5F559DEA72A4}
 		{5FA01751-C8E7-4D90-9C6F-6947D2D33C42} = {3A6E9AF5-A095-41B1-B76A-5F559DEA72A4}
 		{B145EEAE-9C87-4E35-B1F0-2C9385C0A347} = {7C239786-B512-4420-86F4-0051D3EE5CCE}
+		{6F38CFF0-81EE-4B77-96ED-EF78FA81ED2B} = {7C239786-B512-4420-86F4-0051D3EE5CCE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5DC45E70-5060-4B6F-BBA6-541DA845828B}
