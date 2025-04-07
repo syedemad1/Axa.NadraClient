@@ -4,6 +4,7 @@ using Axa.NadraClient.Nadra.Models.OtcVerify;
 using Axa.NadraClient.Nadra.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.Json;
 
 internal class Program
 {
@@ -21,21 +22,32 @@ internal class Program
         // 4. Use the services
         var myService = serviceProvider.GetService<INadraService>();
 
-        OtcVerifyFingerprintsRequest req = new OtcVerifyFingerprintsRequest {
-            CustomerCnic = "3740519679619",
-            CustomerMsisdn = "923215562042",
-            FingerIndex = 1,
-            AreaName = "PUNJAB",
-            NadraTranId = "2005",
-        };
+        if (myService != null)
+        {
+            try
+            {
+                OtcVerifyFingerprintsRequest req = new OtcVerifyFingerprintsRequest("Magicbox", "BN-101", "1234567890123", "03001234567", "1234567890123", "03001234567", 1, "fingerTemplate", TemplateTypes.ANSI, null, 1000, RemittanceTypes.MONENY_TRANSFER_SEND, "PUNJAB", null, null);
 
-        var cancellationToken = new CancellationToken();
-        var nRes = await myService.OtcVerifyFingerprints(req, cancellationToken);
+                Console.WriteLine(JsonSerializer.Serialize(req));
 
-
+                var cancellationToken = new CancellationToken();
+                var nRes = await myService.OtcVerifyFingerprints(req, cancellationToken);
+                if (nRes.IsSuccess)
+                {
+                    Console.WriteLine(JsonSerializer.Serialize(nRes.Value));
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {JsonSerializer.Serialize(nRes)}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+            }
+        }
 
         Console.ReadLine();
-
     }
     private static void ConfigureServices(IServiceCollection services)
     {
@@ -52,8 +64,6 @@ internal class Program
         {
             client.BaseAddress = new Uri(configuration["NadraConfiguration:BaseUrl"]);
         });
-
-
 
         // Register your service
         services.AddTransient<INadraService, NadraService>();

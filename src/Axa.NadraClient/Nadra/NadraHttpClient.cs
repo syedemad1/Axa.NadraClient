@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Axa.NadraClient.Nadra.Models.OtcVerify;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
@@ -18,6 +19,11 @@ namespace Axa.NadraClient.Nadra
 
         public async Task<TResponse?> PostAsync<TRequest, TResponse>(string endpoint, TRequest request, CancellationToken cancellationToken)
         {
+            if(request.GetType() == typeof(OtcVerifyFingerprintsRequest))
+            {
+                _httpClient.DefaultRequestHeaders.Add("x-client-id", ((OtcVerifyFingerprintsRequest)(object)request).clientId);
+            }
+
             var response = await _httpClient.PostAsJsonAsync(endpoint, request, cancellationToken);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<TResponse>(cancellationToken);
